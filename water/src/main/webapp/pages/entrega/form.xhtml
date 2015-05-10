@@ -1,0 +1,92 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="title">#{formEntregaBean.editavel ? msg['page.title.entrega.edit'] : msg['page.title.entrega.form']}</ui:define>
+	<ui:define name="conteudo">
+		<f:metadata>
+			<o:viewParam name="entrega" value="#{formEntregaBean.entrega}" />
+			<f:event listener="#{formEntregaBean.init}" type="preRenderView" />
+		</f:metadata>
+		<div class="row">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" style="height: 52px;">
+					<ul class="list-inline">
+						<li><h4>#{formEntregaBean.editavel ? msg['page.title.entrega.edit'] : msg['page.title.entrega.form']}</h4></li>
+						<li class="pull-right">
+							<h:link id="cadastrar" outcome="form" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-plus"></span> Cadastrar
+  							</h:link>
+  						</li>
+						<li class="pull-right">
+							<h:link id="consultar" outcome="list" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-search"></span> Consultar
+  							</h:link>
+  						</li>
+					</ul>
+				</div>
+
+				<div class="panel-body">
+					<div class="col-md-12">
+						<h:form id="frm" prependId="false" class="form-horizontal">
+							<p:messages id="messages" closable="true" autoUpdate="true" />
+							<!-- Data da entrega -->
+							<div class="form-group form-group-sm">
+								<p:outputLabel for="dataEntrega" value="#{msg['label.entrega.data']}" class="col-sm-2 control-label" />
+								<div class="col-sm-3">
+									<p:inputMask id="dataEntrega" value="#{formEntregaBean.entrega.dataEntrega}" mask="99/99/9999" pt:placeholder="Data de entrega" class="form-control" >
+										<f:convertDateTime type="date" locale="pt_BR" timeZone="GMT-3" pattern="dd/MM/yyyy" />
+									</p:inputMask>
+								</div>
+							</div>
+
+							<!-- valor -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="valor" value="#{msg['label.entrega.valor']}" class="col-sm-2 control-label" />
+								<div class="col-sm-3">
+									<p:inputText id="valor" value="#{formEntregaBean.entrega.valor}" pt:placeholder="Valor da água" class="form-control">
+										<f:convertNumber maxFractionDigits="2" type="number" />
+									</p:inputText>
+								</div>
+							</div>
+							<!-- pagantes -->
+							<div>
+							<p:dataTable id="checkboxDT" var="usuario" value="#{formEntregaBean.usuarios}" selection="#{formEntregaBean.usuariosSelecionados}" rowKey="#{usuario.id}"
+							class="table table-hover">
+						     
+						        <p:column selectionMode="multiple" style="backgroud-color: black; width:35px"/>
+						        
+						        <p:column headerText="Pagantes">
+						            <h:outputText value="#{usuario.nome}" />
+						        </p:column>
+						        <f:facet name="footer">
+						            <!--  <p:commandButton process="checkboxDT" update=":form:multiCarDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiCarDialog').show()" />-->
+						        </f:facet>
+						    </p:dataTable>
+							</div>
+							
+							<!-- Ações -->
+							<div class="form-group form-group-sm">
+								<div class="row">
+									<div class="col-xs-1 col-xs-offset-1">
+										<h:commandButton value="#{msg['button.salvar']}" action="#{formEntregaBean.salvar}" styleClass="btn btn-primary" />
+									</div>
+									<div class="col-xs-1">
+										<h:commandButton value="Limpar" type="reset" icon="ui-icon-close" styleClass="btn btn-default" />
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

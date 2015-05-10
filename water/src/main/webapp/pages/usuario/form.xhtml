@@ -1,0 +1,114 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+	
+	<ui:define name="title">#{formUsuarioBean.editavel ? msg['page.title.usuario.edit'] : msg['page.title.usuario.form']}</ui:define>
+	<ui:define name="conteudo">
+		<f:metadata>
+    		<o:viewParam name="usuario" value="#{formUsuarioBean.usuario}" />
+    		<f:event listener="#{formUsuarioBean.init}" type="preRenderView" />
+    	</f:metadata>
+		<div class="row">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" style="height: 52px;">
+					<ul class="list-inline">
+  						<li><h4>#{formUsuarioBean.editavel ? msg['page.title.usuario.edit'] : msg['page.title.usuario.form']}</h4></li>
+  						<li class="pull-right">
+  							<h:link id="cadastrar" outcome="form" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-plus"></span> Cadastrar
+  							</h:link>
+						</li>
+						<li class="pull-right">
+							<h:link id="consultar" outcome="list" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-search"></span> Consultar
+  							</h:link>
+						</li>
+					</ul>
+				</div>
+
+				<div class="panel-body">
+					<div class="col-md-8">
+						<h:form id="frm" prependId="false" class="form-horizontal">
+							<p:messages id="messages" closable="true" autoUpdate="true" />
+							<!-- Nome -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="nome" value="#{msg['label.usuario.nome']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<h:inputText id="nome" value="#{formUsuarioBean.usuario.nome}" pt:placeholder="Digite seu nome completo" class="form-control"/>
+								</div>
+							</div>
+							<!-- Senha -->
+							<h:column rendered="#{formUsuarioBean.editavel == false}">
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="senha" value="#{msg['label.usuario.senha']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<h:inputSecret id="senha" value="#{formUsuarioBean.usuario.senha}" pt:placeholder="Digite e guarde sua senha" class="form-control">
+										<f:validateLength minimum="6" maximum="15"/>
+									</h:inputSecret>
+								</div>
+							</div>
+							</h:column>
+							<!-- E-mail -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="email" value="#{msg['label.usuario.email']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<h:inputText id="email" value="#{formUsuarioBean.usuario.email}" pt:type="email" pt:placeholder="Digite um e-mail válido" class="form-control"/>
+								</div>
+							</div>
+							<!-- Login -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="login" value="#{msg['label.usuario.login']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<h:inputText id="login" value="#{formUsuarioBean.usuario.login}" pt:type="login" pt:placeholder="Login do Usuário" class="form-control"/>
+								</div>
+							</div>
+							<!-- CPF -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="cpf" value="#{msg['label.usuario.cpf']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<p:inputMask id="cpf" mask="999.999.999-99" value="#{formUsuarioBean.usuario.cpf}" pt:placeholder="CPF é opcional" class="form-control"/>
+								</div>
+							</div>
+							<!-- Permissão -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="permissao" value="#{msg['label.usuario.permissao']}" class="col-sm-2 control-label" />
+								<div class="col-sm-10">
+									<h:selectOneMenu id="permissao" value="#{formUsuarioBean.usuario.permissao}" class="form-control" style="width:300px">
+										<f:selectItem itemLabel="Escolha a permissão" itemDisabled="true"/>
+										<f:selectItems value="#{formUsuarioBean.permissoes}" var="p" itemLabel="#{p}" itemValue="#{p}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							
+							<!-- Ativo -->
+							<div class="form-group form-group-sm">
+								<h:outputLabel for="ativo" value="#{msg['label.usuario.ativo']}" class="col-sm-2 control-label"/>
+								<div class="col-sm-10">
+									<h:selectOneMenu id="ativo" value="#{formUsuarioBean.usuario.ativo}" class="form-control" style="width:300px">
+										<f:selectItem itemLabel="Sim" itemValue="true" />
+										<f:selectItem itemLabel="Não" itemValue="false" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<!-- Ações -->
+							<div class="form-group form-group-sm">
+								<h:commandButton value="Limpar" type="reset" icon="ui-icon-close" styleClass="btn btn-default"/>
+								<div class="col-sm-2">
+									<h:commandButton value="#{msg['button.salvar']}" action="#{formUsuarioBean.salvar}" styleClass="btn btn-primary"/>
+								</div>
+							</div>
+						</h:form>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

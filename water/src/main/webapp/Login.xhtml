@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<f:view>
+	<h:head>
+		<meta name="author" content="Nalomy Souza" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>#{msg['page.title.app']} - <ui:insert name="title" /></title>
+		<!-- Stylesheet -->
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="bootstrap-glyphicons.css" />
+	</h:head>
+	<h:body>
+		<div class="wrapper">
+			<div class="row">
+				<h:graphicImage library="imagens" name="bg_topo.png" width="100%"
+					height="40px"
+					style="display: block;margin-left: auto;margin-right: auto;" />
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-md-8">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Componentes do sistema Water</h3>
+						</div>
+						<div class="panel-body">
+							<dl>
+								<dt>Description lists</dt>
+								<dd>A description list is perfect for defining terms.</dd>
+								<dt>Euismod</dt>
+								<dd>Vestibulum id ligula porta felis euismod semper eget
+									lacinia odio sem nec elit.</dd>
+								<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+								<dt>Malesuada porta</dt>
+								<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+								<dt>Description lists</dt>
+								<dd>A description list is perfect for defining terms.</dd>
+								<dt>Euismod</dt>
+								<dd>Vestibulum id ligula porta felis euismod semper eget
+									lacinia odio sem nec elit.</dd>
+								<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+								<dt>Malesuada porta</dt>
+								<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+							</dl>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-3">
+					<div class="alert alert-warning">
+						<strong>Esqueceu sua senha?</strong> Verifique se está digitando
+						corretamente
+					</div>
+					<h:form id="frm" prependId="false">
+						<h3 style="text-align: center;">
+							Acessar <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+						</h3>
+						<h:inputText id="j_username" class="form-control"
+							pt:placeholder="Login" value="#{loginBean.login}" />
+						<br />
+						<h:inputSecret id="j_password" class="form-control"
+							pt:placeholder="Senha" />
+
+						<div class="checkbox">
+							<label> <h:selectBooleanCheckbox value="remember-me" />
+								Lembrar-me
+							</label>
+						</div>
+						<h:commandButton action="#{loginBean.login}" value="Entrar" class="btn btn-lg btn-success btn-block" />
+					</h:form>
+				</div>
+			</div>
+			<!-- /.content-secondary -->
+
+			<hr />
+			<footer class="row">
+				<div class="footer">
+					<p style="text-align: center; padding-top: 30px;">
+						<b>Secretaria da Cultura do Estado do Ceará </b> <br /> © 2015 -
+						Governo do Estado do Ceará. Todos os direitos reservados.
+					</p>
+				</div>
+			</footer>
+		</div>
+		<!-- /.wrapper -->
+
+		<!-- JS BootStrap and Jquery -->
+		<h:outputScript name="bootstrap.min.js" library="js" target="body" />
+		<h:outputScript library="js" name="jquery.min.js" />
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<h:outputStylesheet library="js"
+			name="ie10-viewport-bug-workaround.js" />
+	</h:body>
+</f:view>
+</html>

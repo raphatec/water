@@ -1,0 +1,26 @@
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url("#{resource['fonts/glyphicons-halflings-regular.eot']}");
+	src: url("#{resource['fonts/glyphicons-halflings-regular.eot']}?#iefix")
+		format('embedded-opentype'),
+		url("#{resource['fonts/glyphicons-halflings-regular.woff']}")
+		format('woff'),
+		url("#{resource['fonts/glyphicons-halflings-regular.ttf']}")
+		format('truetype'),
+		url("#{resource['fonts/glyphicons-halflings-regular.svg']}#glyphicons-halflingsregular")
+		format('svg')
+}
+
+.footer {
+	height: 76px;
+	background: url("#{resource['imagens/bg_rodape.png']}") no-repeat;
+	background-position: center;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+
+/*.ui-datatable thead th, .ui-datatable tbody, .ui-datatable tbody tr,
+	.ui-datatable tbody td {
+	border-style: none !important;
+}*/

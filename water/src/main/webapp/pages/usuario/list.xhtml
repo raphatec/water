@@ -1,0 +1,114 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="title">#{msg['page.title.usuario.list']}</ui:define>
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:event listener="#{listUsuarioBean.init}" type="preRenderView" />
+		</f:metadata>
+		<div class="row">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" style="height: 52px;">
+					<ul class="list-inline">
+  						<li><h4>#{msg['page.title.usuario.list']}</h4></li>
+  						<li class="pull-right">
+  							<h:link id="cadastrar" outcome="form" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-plus"></span> Cadastrar
+  							</h:link>
+						</li>
+						<li class="pull-right">
+							<h:link id="consultar" outcome="list" styleClass="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-search"></span> Consultar
+  							</h:link>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="panel-body">
+					
+						<h:form id="frmTable" prependId="false">
+							<p:messages id="messages" closable="true" autoUpdate="true" />
+							
+							<div class="table-responsive">
+							
+								<p:dataTable id="usuariosTable" value="#{listUsuarioBean.usuarios}" var="usuario" emptyMessage="Nenhum usuário encontrado." rows="20"
+								paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom" tableStyleClass="table table-striped">
+								
+								<p:column headerText="#{msg['label.usuario.id']}" style="width:3%; text-align: center;">
+									<h:outputText value="#{usuario.id}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.usuario.nome']}" style="width:19%; text-align: center;">
+									<h:outputText value="#{usuario.nome}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.usuario.email']}" style="width:19%; text-align: center;">
+									<h:outputText value="#{usuario.email}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.usuario.cpf']}" style="width:10%; text-align: center;">
+									<h:outputText value="#{usuario.cpf}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.usuario.permissao']}" style="width:10%; text-align: center;">
+									<h:outputText value="#{usuario.permissao}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.usuario.ativo']}" style="width:8%; text-align: center;">
+									<h:outputText value="#{usuario.ativo}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.acoes']}" style="width:8%; text-align: center;" >
+									<p:link id="editLink" outcome="form" styleClass="btn btn-primary">
+										<span class="glyphicon glyphicon-pencil"></span>
+           								<f:param name="usuario" value="#{usuario.id}"/>
+  									</p:link>
+  									
+  									<p:commandLink id="deleteLink" styleClass="btn btn-primary" process="@this" update=":frmTable:txtModal">
+                						<f:setPropertyActionListener target="#{listUsuarioBean.selecionado}" value="#{usuario}"/>
+    									<span class="glyphicon glyphicon-trash"></span>
+    									<f:passThroughAttribute name="data-toggle" value="modal" />
+                                    	<f:passThroughAttribute name="data-target" value="#modalTable" />
+									</p:commandLink>
+								</p:column>
+								</p:dataTable>
+							</div>
+							
+							<div id="modalTable" class="modal fade">
+								<div class="modal-dialog">
+							    	<div class="modal-content">
+							      		<div class="modal-header">
+							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+							        		<h4 class="modal-title">
+							        			<span class="text-danger">
+							        				Excluir usuário <span class="glyphicon glyphicon-trash"></span>
+							        			</span>
+							        		</h4>
+							      		</div>
+							      		<div class="modal-body">
+							        		<p class="text-danger">Você realmente quer excluir o usuário <h:outputLabel id="txtModal" value="#{listUsuarioBean.selecionado.nome}"/> ?</p>
+							      		</div>
+							      		<div class="modal-footer">
+							        		<p:commandButton value="Sim" action="#{listUsuarioBean.excluir}" process="@this" update=":frmTable:usuariosTable" class="btn btn-success">
+							        			<f:passThroughAttribute name="data-dismiss" value="modal" />
+							        		</p:commandButton>
+							        		<p:commandButton value="Não" class="btn btn-default">
+							        			<f:passThroughAttribute name="data-dismiss" value="modal" />
+							        		</p:commandButton>
+							      		</div>
+							    	</div><!-- /.modal-content -->
+							  	</div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+							
+					</h:form>
+					
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

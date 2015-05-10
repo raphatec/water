@@ -1,0 +1,68 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="title">#{msg['page.title.home']}</ui:define>
+	<ui:define name="conteudo">
+		<div class="container-fluid">
+			<!-- Brads -->
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Library</a></li>
+				<li class="active">Data</li>
+			</ol>
+			<!-- Tabela exemplo -->
+			<h2 class="sub-header">Últimos Créditos</h2>
+			<div class="table-responsive">
+				<div class="panel-body">
+					
+						<h:form id="frmTable" prependId="false">
+							<p:messages id="messages" closable="true" autoUpdate="true" />
+							
+							<div class="table-responsive">
+							
+								<p:dataTable id="creditosTable" value="#{seguranca.usuario.creditos}" var="credito" emptyMessage="Nenhum crédito encontrado." rows="20"
+								paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom" tableStyleClass="table table-hover">
+								
+								<p:column headerText="#{msg['label.credito.datacadastro']}" style="width:19%; text-align: center;">
+									<h:outputText value="#{credito.dataCadastro}">
+										<f:convertDateTime type="date" locale="pt_BR" timeZone="GMT-3" pattern="dd/MM/yyyy" />
+									</h:outputText>
+									
+								</p:column>
+												
+								<p:column headerText="#{msg['label.credito.usuario.nome']}" style="width:19%; text-align: center;">
+									<h:outputText value="#{credito.usuario.nome}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.credito.cadastrante']}" style="width:19%; text-align: center;">
+									<h:outputText value="#{credito.cadastrante.nome}" />
+								</p:column>
+								
+								<p:column headerText="#{msg['label.credito.valor']}" style="width:10%; text-align: center;">
+									<h:outputText value="#{credito.valor}">
+										<f:convertNumber type="currency"/>
+									</h:outputText>
+								</p:column>
+								
+								<p:column headerText="#{msg['label.credito.motivo']}" style="width:10%; text-align: center;">
+									<h:outputText value="#{credito.motivo}" />
+								</p:column>								
+						
+								</p:dataTable>
+							</div>
+							
+							
+							
+					</h:form>
+					
+				</div>
+			</div>
+			<!-- conteudo tabela fim -->
+		</div>
+	</ui:define>
+</ui:composition>

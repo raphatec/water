@@ -1,0 +1,33 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="list-group">
+		<a href="/water" class="list-group-item active">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+		</a> 
+		<a href="#{request.contextPath}/pages/usuario/list.xhtml" class="list-group-item">
+			<span class="text-primary">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuário
+			</span>
+		</a> 
+	
+		<a href="#{request.contextPath}/pages/credito/list.xhtml" class="list-group-item">
+			<span class="text-primary">
+				<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Crédito
+			</span>
+		</a> 
+		<a href="#{request.contextPath}/pages/entrega/list.xhtml" class="list-group-item">
+			<span class="text-primary">
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Entrega
+			</span>
+		</a> 
+		<a href="#" class="list-group-item">
+			<span class="text-primary">
+				<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Relatórios
+			</span>
+		</a>
+	</div>
+</ui:fragment>

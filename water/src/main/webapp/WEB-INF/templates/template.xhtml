@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<h:head>
+		<meta name="author" content="Nalomy Souza" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>#{msg['page.title.app']} - <ui:insert name="title" /></title>
+		<!-- Stylesheet -->
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="bootstrap-glyphicons.css" />
+	</h:head>
+	<h:body>
+		<div class="container-fluid">
+			<div class="row">
+				<h:graphicImage library="imagens" name="bg_topo.png" width="100%" height="40px"
+					style="display: block;margin-left: auto;margin-right: auto;" />
+			</div>
+
+			<div class="row">
+				<ui:include src="/WEB-INF/templates/navbar.xhtml" />
+			</div>
+
+			<div class="row">
+				<div class="col-md-3">
+					<ui:include src="/WEB-INF/templates/leftbar.xhtml" />
+				</div>
+
+				<div class="col-md-9">
+					<ui:insert name="conteudo" />
+				</div>
+			</div>
+			<hr />
+			<footer class="row">
+				<div class="footer">
+					<p style="text-align: center; padding-top: 30px;">
+						<b>Secretaria da Cultura do Estado do Ceará </b> <br /> © 2015 -
+						Governo do Estado do Ceará. Todos os direitos reservados.
+					</p>
+				</div>
+			</footer>
+		</div>
+		<!-- Ajax Status -->
+		<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoeda()">
+			<f:facet name="start">
+				<h:graphicImage library="imagens" name="progress-bar.gif"/>
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value=""/>
+			</f:facet>
+		</p:ajaxStatus>
+ 		
+		<!-- JS BootStrap and Jquery -->
+		<h:outputScript name="bootstrap.min.js" library="js" target="body" />.
+		<!-- Imbutido no PrimeFaces -->
+		<h:outputScript library="js" name="jquery.min.js" />
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<h:outputStylesheet library="js" name="ie10-viewport-bug-workaround.js" />
+		<!-- Mask Money BR -->
+		<h:outputScript name="jquery.maskMoney.js" library="js" target="body"/>
+		<script type="text/javascript" >
+			function configurarMoeda() {
+				$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+			}
+			$(document).ready(function() {
+				configurarMoeda();
+			});
+		</script>
+	</h:body>
+</f:view>
+</html>

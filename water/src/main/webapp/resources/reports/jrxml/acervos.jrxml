@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="acervos" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d1b9aba-e86b-4035-bd01-421341147c5f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ano" class="java.lang.String">
+		<fieldDescription><![CDATA[ano]]></fieldDescription>
+	</field>
+	<field name="autor" class="java.lang.String">
+		<fieldDescription><![CDATA[autor.nome]]></fieldDescription>
+	</field>
+	<field name="edicao" class="java.lang.String">
+		<fieldDescription><![CDATA[edicao]]></fieldDescription>
+	</field>
+	<field name="editora" class="java.lang.String">
+		<fieldDescription><![CDATA[editora.nome]]></fieldDescription>
+	</field>
+	<field name="estoque" class="java.lang.Integer">
+		<fieldDescription><![CDATA[estoque]]></fieldDescription>
+	</field>
+	<field name="estoqueReservaTecnica" class="java.lang.Integer">
+		<fieldDescription><![CDATA[estoqueReservaTecnica]]></fieldDescription>
+	</field>
+	<field name="fonte" class="java.lang.String">
+		<fieldDescription><![CDATA[fonte.nome]]></fieldDescription>
+	</field>
+	<field name="titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="subfonte" class="java.lang.String">
+		<fieldDescription><![CDATA[subFonte.nome]]></fieldDescription>
+	</field>
+	<field name="totalEntrada" class="java.lang.Integer">
+		<fieldDescription><![CDATA[totalEntrada]]></fieldDescription>
+	</field>
+	<field name="volume" class="java.lang.String">
+		<fieldDescription><![CDATA[volume]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="119">
+			<image>
+				<reportElement x="0" y="0" width="802" height="119" uuid="be59925b-f2a2-47ce-afd1-28e1f602490e"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3b272c02-4dea-42e5-bdce-39d02fd11690"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório - Acervos Geral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="667" y="20" width="94" height="19" uuid="f94e1050-fea9-400b-a90c-e64eb46c5e98"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Total de acervos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="762" y="20" width="40" height="19" uuid="08133274-6cd0-40c9-b489-4eb40b230917"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="0" y="20" width="802" height="1" forecolor="#666666" uuid="99423045-2f1a-4110-b43e-31abf9c04bf0"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="190" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3f71af67-bf7b-412d-bb34-4b1a99f44383"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="246" y="0" width="158" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ed756334-2200-41ac-987d-b5a9be1eb23a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="713" y="0" width="89" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="16aa5b93-0b6e-4916-8207-8d32187ddf2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reserva Técnica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="518" y="0" width="149" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="97cf2c5b-8f89-44e4-a538-d22349319be7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fonte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="404" y="0" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3e5ee569-800d-40f6-9e19-43abada2e66c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Editora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="667" y="0" width="46" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="57bbb496-a37d-4cc2-8332-ca5c784be79b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="190" y="0" width="56" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d187cc66-9552-4f21-b1ad-1802de7d460d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entradas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1" uuid="ddf86ba5-4918-4af7-8f27-b1531b845969"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="190" height="20" uuid="5adfd67e-2284-4a65-b188-7567c37c2659"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="518" y="0" width="149" height="20" uuid="6f73314f-cf36-4d2f-8776-584445409de1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fonte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="0" width="158" height="20" uuid="e2c1ba5e-187b-4cda-8676-2257e0fe8a14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{autor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="0" width="114" height="20" uuid="63266877-66b1-486c-82ba-65c1cba0d67a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{editora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="667" y="0" width="46" height="20" uuid="bbe53e45-9a82-4374-9455-eb33d693872f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estoque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="56" height="20" uuid="c90dfa98-e42d-41ba-b737-c684b7bcb021"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalEntrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="713" y="0" width="89" height="20" uuid="8ab441c1-3855-4e09-8dc0-b52a5acbf0b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estoqueReservaTecnica}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="0" width="761" height="17" backcolor="#E6E6E6" uuid="efa14ef2-75b1-4e90-8b04-e1674b3fdf28"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="227" height="17" uuid="f3880899-49a0-4053-b3e1-58271ffe5d46"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="761" y="0" width="41" height="17" backcolor="#E6E6E6" uuid="6570223b-1866-4545-a266-f30b7d2d920b"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
